@@ -1,0 +1,33 @@
+name: Run Jupyter Notebook
+
+on:
+  push:
+    paths:
+      - '*.ipynb'
+
+jobs:
+  run-notebook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          
+      - name: Install dependencies
+        run: |
+          pip install jupyter numpy opencv-python matplotlib sklearn scipy wandb
+          
+      - name: Run notebook
+        env:
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+        run: |
+          jupyter nbconvert --to notebook --execute your_notebook.ipynb
+          
+      - name: Upload notebook
+        uses: actions/upload-artifact@v2
+        with:
+          name: notebook-output
+          path: your_notebook.ipynb

@@ -1,0 +1,31 @@
+{
+  "os":  "Linux-6.8.0-52-generic-x86_64-with-glibc2.35",
+  "python":  "CPython 3.10.12",
+  "startedAt":  "2025-02-26T19:19:23.785856Z",
+  "program":  "Lab 5-Spring 2025.ipynb",
+  "codePath":  "Lab 5-Spring 2025.ipynb",
+  "git":  {
+    "remote":  "git@github.com:donboose/distance_classification.git",
+    "commit":  "e1042049c38d1eb5c8ec8ad7468ce3941aa0393c"
+  },
+  "email":  "arunachalamvn2005@gmail.com",
+  "root":  "/home/arun/Desktop/college/sem4/mlpr/lab5/distance_classification",
+  "host":  "arun-asus",
+  "executable":  "/home/arun/Desktop/college/sem4/mlpr/lab5/distance_classification/mlpr_env/bin/python",
+  "codePathLocal":  "Lab 5-Spring 2025.ipynb",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "492072321024",
+      "used":  "272186306560"
+    }
+  },
+  "memory":  {
+    "total":  "16451440640"
+  },
+  "cpu":  {
+    "count":  4,
+    "countLogical":  8
+  }
+}
