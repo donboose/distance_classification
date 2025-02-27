@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from scipy.spatial import distance
@@ -37,9 +39,7 @@ for (x, y, w, h) in faces_rect:
     cv2.putText(img, text, (x, y - 10), font, font_scale, font_color, font_thickness)
 
 ## Display the image and window title should be "Total number of face detected are #"
-cv2.imshow(f"Detected faces: {len(faces_rect)}", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv2.imwrite('detected_faces.jpg', img)
 # %%
 wandb.log({
     "number_of_faces_detected": len(faces_rect),
@@ -84,7 +84,7 @@ plt.title('Face Clustering')
 ## Put grid
 plt.grid(True)
 ## show the plot
-plt.show()
+plt.savefig('face_clustering.png')
 # %%
 wandb.log({
     "face_clustering_plot": wandb.Image(plt),
@@ -140,7 +140,7 @@ plt.legend()
 ## Add grid
 plt.grid(True)
 ## Show the plot
-plt.show()
+plt.savefig('face_clustering_centroids.png')
 # %%
 ## Read the class of the template image 'Dr_Shashi_Tharoor.jpg' using cv2 and store it in template_img
 template_img = cv2.imread('Dr_Shashi_Tharoor.jpg')
@@ -151,9 +151,7 @@ template_faces = face_cascade.detectMultiScale(gray, 1.05, 4, minSize=(25, 25), 
 # Draw rectangles around the detected faces
 for (x, y, w, h) in template_faces:
     cv2.rectangle(template_img, (x, y), (x + w, y + h), (0, 255, 0), 3)
-cv2.imshow(f"Template Image - Faces Detected: {len(template_faces)}", template_img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv2.imwrite('template_faces.jpg', template_img)
 # %%
 # Convert the template image to HSV color space and store it in template_hsv
 template_hsv = cv2.cvtColor(template_img, cv2.COLOR_BGR2HSV)
@@ -195,7 +193,7 @@ plt.title('Face Clustering with Template Image')
 ## Add grid
 plt.grid(True)
 ## show plot
-plt.show()
+plt.savefig('face_clustering_template.png')
 # %%
 # Create an empty list to store legend labels
 legend_labels = []
@@ -238,4 +236,4 @@ plt.legend()
 ## Add grid
 plt.grid(True)
 ## show the plot
-plt.show()
+plt.savefig('face_clustering_template_point.png')

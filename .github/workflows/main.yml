@@ -6,7 +6,7 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -20,3 +20,15 @@ jobs:
 
       - name: Run face detection script
         run: python face_detection.py
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: output-images
+          path: |
+            template_faces.jpg
+            detected_faces.jpg
+            face_clustering.png
+            face_clustering_centroids.png
+            face_clustering_template.png
+            face_clustering_template_point.png
