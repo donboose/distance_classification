@@ -18,7 +18,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install jupyter numpy opencv-python matplotlib sklearn scipy wandb
+          pip install jupyter numpy opencv-python matplotlib scikit-learn scipy wandb
           
       - name: Run notebook
         run: |
