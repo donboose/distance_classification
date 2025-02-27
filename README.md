@@ -10,3 +10,11 @@
 4. Cross validation helps assess model generalization, prevents overfitting, helps in parameter tuning and provides robust performance estimates.
 5. - Variance: higher k is lower variance, measures model's sensitivity to training data, too low k leads to overfitting
    - Bias: higher k is higher bias, represents the model's assumptions, too high k leads to underfitting
+
+# Output
+
+![image](1.png)
+![image](2.png)
+![image](3.png)
+![image](5.png)
+![image](4.png)
