@@ -18,14 +18,18 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install jupyter numpy opencv-python matplotlib scikit-learn scipy wandb
+          python -m pip install --upgrade pip
+          pip install jupyter nbconvert numpy opencv-python matplotlib scikit-learn scipy wandb ipykernel
+          python -m ipykernel install --user --name python3 --display-name "Python 3"
           
       - name: Run notebook
         run: |
-          jupyter nbconvert --to notebook --execute 'Lab 5-Spring 2025.ipynb'
+          jupyter kernelspec list
+          jupyter nbconvert --to notebook --execute 'Lab 5-Spring 2025.ipynb' --ExecutePreprocessor.timeout=600 --ExecutePreprocessor.kernel_name=python3
           
       - name: Upload notebook
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: notebook-output
-          path: 'notebook_output.ipynb'
+          path: 'Lab 5-Spring 2025.nbconvert.ipynb'
