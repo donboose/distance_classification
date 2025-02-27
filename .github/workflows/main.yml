@@ -1,20 +1,22 @@
-name: Run Tests
+name: Run Face Detection
+
 on: [push]
 
 jobs:
-  test:
+  run-script:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
+      - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-          
+
       - name: Install dependencies
         run: |
-          pip install numpy pandas scikit-learn
-          
-      - name: Run test script
-        run: python test_script.py
+          python -m pip install --upgrade pip
+          pip install numpy opencv-python matplotlib scikit-learn scipy wandb
+
+      - name: Run face detection script
+        run: python face_detection.py
